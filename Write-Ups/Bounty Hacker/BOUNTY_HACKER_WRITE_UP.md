@@ -16,6 +16,7 @@ Essa máquina é inspirada no anime Cowboy Bebop e aprofunda alguns conceitos in
 Normalmente, a primeira coisa que fazemos ao começar um desafio, é o reconhecimento. Depois de ligar a máquina, conseguir o IP, e se conectar à VPN do THM, eu costumo rodar o NMAP com dois scripts diferentes.
 
 - O primeiro deles:
+  
 _![Imagem](imagens/nmap1.png)_
 
 ``` bash
@@ -29,6 +30,7 @@ Esse comando basicamente executa uma varredura em todas as portas de um ``IP``, 
 - PS: O número ``5000`` especificado na flag ``--min-rate`` é um valor que utilizo na **MINHA** máquina. Talvez seja um valor alto demais ou até baixo demais pra sua máquina. Vale a pena tentar começar com um número menor e ir aumentando gradativamente até achar um valor ideal.
 
 - O segundo script:
+
 _![Imagem](imagens/nmap2.png)_
 
 ``` bash
@@ -46,26 +48,33 @@ Após a etapa inicial, se checarmos a porta ftp vamos descobrir a existência de
 ``` bash
 ftp <IP>
 ```
+
 _![Imagem](imagens/ftp_login.png)_
 
 Dentro do servidor ftp (File Transfer Protocol), temos um funcionamento similar à uma shell. Podemos usar o comando ``ls`` para listar os arquivos no servidor e utilizar o ``get`` para fazer o download para nossa máquina local. Por fim, usamos ``quit`` para sair do servidor.
+
 _![Imagem](imagens/ftp_get1.png)_
 _![Imagem](imagens/ftp_quit.png)_
+
 ###### O servidor ftp dessa box é bem lento, talvez sejam necessárias várias tentativas para baixar os arquivos. 
 
 Em seguida, analisando os arquivos que baixamos vemos as seguintes mensagens:
+
 _![Imagem](imagens/notes.png)_
 
 Temos então a primeira "flag", quem escreveu a lista de tarefas e uma lista de senhas. Podemos usar essa lista para conseguir uma shell através do hydra.
 _![Imagem](imagens/hydra.png)_
 
 Deu certo! Agora só precisamos conectar ao ssh!
+
 _![Imagem](imagens/shell.png)_
 
 Nesse ponto já podemos descobrir a flag do usuário:
+
 _![Imagem](imagens/user.png)_
 
 Em seguida, temos que escalar privilégios para root. Tentei usar o comando ``sudo -l``e...
+
 _![Imagem](imagens/sudo.png)_
 
 Bingo! Descobrimos que podemos usar o comando ``tar`` como ``root``!
@@ -73,10 +82,12 @@ Bingo! Descobrimos que podemos usar o comando ``tar`` como ``root``!
 Se você tem alguma experiência com pentesting, sabe que essa é uma grande falha de segurança. Usuários comuns não deveriam ter acesso à rodar comandos utilizando sudo sem a senha.
 
 Dando uma olhada no **GTFOBins**, vemos que o comando ``tar`` pode nos garantir uma shell sem a perda de privilégios!
+
 _![Imagem](imagens/gtfobins.png)_
 _![Imagem](imagens/gtfobins2.png)_
 
 Copiando o comando e colando ele exatamente como no site, temos o seguinte resultado:
+
 _![Imagem](imagens/root.png)_
 
 **Root!** A partir desse ponto foi possível navegar até o diretório ``/root`` e conseguir a última flag para terminar a box.
