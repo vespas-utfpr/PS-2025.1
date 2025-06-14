@@ -82,6 +82,7 @@ access_username=<username>&password=<senha>
 Se o usuário e a senha solicitados forem o correto logo de cara, o script recusará, se não, fornece a cifra da string acima e pede a cifra fornecida para decriptação e verificação:
 
 _![Imagem](imagens/image6.png)_
+
 Se essa verificação for positiva, temos a flag, portanto, nossa missão é modificar a cifra fornecida para decriptar em um payload que contenha 
 ``admin&password=sUp3rPaSs1 ``.
 
@@ -119,6 +120,7 @@ _![Imagem](imagens/image10.png)_
 Com isso, podemos construir um script python para fazer toda a manipulação da cifra que precisamos:
 
 _![Imagem](imagens/image12.png)_
+
 Aqui seguimos a técnica que foi discutida previamente, onde mudamos um bit estrategicamente no ciphertext, que é o último caractere do primeiro bloco (posição 16, que implica em posição 15 no array) para produzir o output que queremos. Assim, executando o script temos nossa cifra modificada:
 
 _![Imagem](imagens/image14.png)_
