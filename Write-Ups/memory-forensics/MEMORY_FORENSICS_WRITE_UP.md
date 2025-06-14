@@ -16,6 +16,7 @@ Para começar, precisamos determinar o perfil do sistema operacional do dump de 
 ```bash
 volatility -f Snapshot6_1609157562389.vmem imageinfo
 ```
+
 *![foto-imageinfo](imagens/problema1/imageinfo.png)*
 
 ### Extraindo Hashes de Senha (hashdump)
@@ -42,6 +43,7 @@ Antes de usar qualquer plugin, precisamos descobrir qual profile utilizar. Para 
 ```bash
 volatility -f Snapshot19_1609159453792.vmem imageinfo
 ```
+
 *![foto-imageinfo](imagens/problema2/imageinfo.png)*
 
 ### Verificando quando o computador foi desligado
@@ -49,6 +51,7 @@ O plugin shutdowntime permite visualizar as últimas vezes que o sistema foi des
 ```bash
 volatility -f Snapshot19_1609159453792.vmem --profile=[REDACTED] shutdowntime 
 ```
+
 *![foto-imageinfo](imagens/problema2/shutdowntime.png)*
 
 ### Encontrando o que ele escreveu no terminal
@@ -56,6 +59,7 @@ volatility -f Snapshot19_1609159453792.vmem --profile=[REDACTED] shutdowntime
 ```bash
 volatility -f Snapshot19_1609159453792.vmem --profile=[REDACTED] consoles
 ```
+
 *![foto-imageinfo](imagens/problema2/flag.png)*
 
 ## TrueCrypt
@@ -66,6 +70,7 @@ Para isso, executamos:
 ```bash
 volatility -f memory.vmem --profile=[REDACTED] truecryptpassphrase
 ```
+
 *![foto-imageinfo](imagens/problema3/senha.png)*
 
 ### Room finalizada!
