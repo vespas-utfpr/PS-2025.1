@@ -118,15 +118,19 @@ Para resolver este desafio, seguimos os passos abaixo:
 
 1. Abra o arquivo de áudio em um editor como o **Audacity**.
    - Visualização no Audacity:
+   
      _![Imagem com a flag](imagens/espectograma/audio.png)_
+     
 2. Clique na setinha ao lado do nome da faixa de áudio e selecione a opção **"Espectrograma"** para alterar a visualização.
 
    - Isso revelará uma imagem oculta no espectro do som.
    - Exemplo da visualização espectral:
+   
      _![Imagem do espectrograma](imagens/espectograma/espectograma.png)_
 
 3. A flag será visível na forma de texto codificado dentro do espectrograma.
    - Exemplo do resultado:
+     
      _![Imagem com a flag](imagens/espectograma/flag.png)_
 
 **Flag encontrada!**
